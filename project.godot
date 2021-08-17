@@ -31,6 +31,8 @@ GamePass="*res://sence/idontknowhowtonamethissigeleton.tscn"
 [display]
 
 window/size/width=1020
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [global]
 
