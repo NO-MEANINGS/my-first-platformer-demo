@@ -29,24 +29,24 @@ font_data = ExtResource( 6 )
 [sub_resource type="CircleShape2D" id=4]
 radius = 32.28
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 24
 outline_size = 1
 font_data = ExtResource( 6 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 55, 7 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 14, 30 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 116, 57 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 36, 60 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 120, 10 )
 
 [node name="Node2D" type="Node2D"]
@@ -76,7 +76,7 @@ position = Vector2( 5616, 1278 )
 position = Vector2( 5424, 1566 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 236, 1128 )
+position = Vector2( 238.223, 1127.41 )
 collision_mask = 29
 
 [node name="Sprite" parent="Player" index="2"]
@@ -132,7 +132,7 @@ margin_left = 1705.0
 margin_top = 718.0
 margin_right = 2049.0
 margin_bottom = 796.0
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 5 )
 text = "you can kick walls to jump higher:
 face to a wall, then jump"
 __meta__ = {
@@ -145,7 +145,7 @@ margin_left = 4566.0
 margin_top = 1322.0
 margin_right = 4899.0
 margin_bottom = 1404.0
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 5 )
 text = "you can kick walls to jump higher:
 face to a wall, then jump"
 __meta__ = {
@@ -158,7 +158,7 @@ margin_left = 2502.0
 margin_top = 797.0
 margin_right = 2835.0
 margin_bottom = 885.0
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 5 )
 text = "you can kick walls to jump higher:
 face to a wall, then jump"
 __meta__ = {
@@ -171,7 +171,7 @@ margin_left = 1155.0
 margin_top = 1109.0
 margin_right = 1482.0
 margin_bottom = 1206.0
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 5 )
 text = "you can kick walls to jump higher:
 face to a wall, then jump"
 __meta__ = {
@@ -185,7 +185,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/kick_wall_jump/Area2D"]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Area2D2" type="Area2D" parent="Node2D/kick_wall_jump"]
 position = Vector2( 1689, 1122 )
@@ -194,16 +194,16 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/kick_wall_jump/Area2D2"]
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [node name="Area2D3" type="Area2D" parent="Node2D/kick_wall_jump"]
-position = Vector2( 2784, 933 )
+position = Vector2( 2780.25, 937.495 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/kick_wall_jump/Area2D3"]
-shape = SubResource( 9 )
+shape = SubResource( 8 )
 
 [node name="Area2D4" type="Area2D" parent="Node2D/kick_wall_jump"]
 position = Vector2( 4937, 1475 )
@@ -212,7 +212,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/kick_wall_jump/Area2D4"]
-shape = SubResource( 10 )
+shape = SubResource( 9 )
 
 [node name="Flag" type="Area2D" parent="."]
 position = Vector2( 5498, 1816 )
@@ -222,7 +222,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flag"]
-shape = SubResource( 5 )
+shape = SubResource( 10 )
 
 [connection signal="player_touched_spike" from="collision/spike" to="Player" method="respawn"]
 [connection signal="level_changed" from="levels/0" to="Player/Camera2D" method="_on_level_changed"]
@@ -234,6 +234,7 @@ shape = SubResource( 5 )
 [connection signal="level_changed" from="levels/4" to="Player/Camera2D" method="_on_level_changed"]
 [connection signal="level_changed" from="levels/5" to="Player/Camera2D" method="_on_level_changed"]
 [connection signal="level_changed" from="levels/6" to="Player/Camera2D" method="_on_level_changed"]
+[connection signal="pull_down" from="Player" to="Player" method="_on_Player_pull_down"]
 [connection signal="pull_started" from="Player" to="Node2D" method="_on_Player_pull_started"]
 [connection signal="wall_jump_learned" from="Player" to="Node2D" method="_on_Player_wall_jump_learned"]
 [connection signal="body_entered" from="Node2D/jumparea" to="Node2D" method="_on_jumparea_body_entered"]
@@ -246,4 +247,5 @@ shape = SubResource( 5 )
 [editable path="Map"]
 [editable path="collision"]
 [editable path="levels"]
+[editable path="lanterns"]
 [editable path="Player"]

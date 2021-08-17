@@ -27,7 +27,7 @@ func _process(_delta):
 		j = false
 		$jump.visible = false && j
 	
-	if !(m || j || p): self.queue_free()
+	#if !(m || j || p || !kwj): self.queue_free()
 	
 	return
 

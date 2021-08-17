@@ -168,7 +168,7 @@ func update_instructions() -> void:
 			instructions.append("jump.interrupted")
 			wall_jumping = 0
 	
-	if inputs.pull_just_pressed && pull_lock == 0:
+	if inputs.pull_just_pressed && pull_lock == 0 && $Timer.is_stopped():
 		instructions.append("pull")
 	
 	return
@@ -301,3 +301,8 @@ func __print_inputs() -> void:
 	print("--------------- frame=", frame_count)
 	for k in inputs:
 		print(k, " = ", inputs[k])
+
+
+func _on_Player_pull_down():
+	$Timer.start()
+	return

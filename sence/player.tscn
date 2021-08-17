@@ -196,10 +196,14 @@ polygon = PoolVector2Array( 12, -8, 15, 26, 0, 36, -15, 26, -12, -8 )
 stream = ExtResource( 8 )
 autoplay = true
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="face_changed" from="." to="Detectors/WallDetectorDown" method="_on_Player_face_changed"]
-[connection signal="face_changed" from="." to="AnimationPlayer" method="_on_Player_face_changed"]
-[connection signal="face_changed" from="." to="Detectors/GroundDetectorBack" method="_on_Player_face_changed"]
-[connection signal="face_changed" from="." to="Detectors/WallDetectorUp" method="_on_Player_face_changed"]
 [connection signal="face_changed" from="." to="Detectors/GroundDetectorFront" method="_on_Player_face_changed"]
+[connection signal="face_changed" from="." to="Detectors/WallDetectorUp" method="_on_Player_face_changed"]
+[connection signal="face_changed" from="." to="Detectors/GroundDetectorBack" method="_on_Player_face_changed"]
+[connection signal="face_changed" from="." to="AnimationPlayer" method="_on_Player_face_changed"]
 [connection signal="area_entered" from="Detectors/LanternDetector" to="Detectors" method="_on_LanternDetector_lantern_entered"]
 [connection signal="area_exited" from="Detectors/LanternDetector" to="Detectors" method="_on_LanternDetector_lantern_exited"]
