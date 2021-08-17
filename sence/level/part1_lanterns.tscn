@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sence/lantern/lantern_type1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sence/lantern/lantern_type2.tscn" type="PackedScene" id=2]
+
+[node name="lanterns" type="Node2D"]
+
+[node name="lantern1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2556, 720 )
+
+[node name="lantern2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2874, 816 )
+
+[node name="lantern3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3618, 858 )
+
+[node name="lantern4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3408, 1044 )
+
+[node name="lantern5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3450, 1248 )
+
+[node name="lantern6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 4830, 1290 )
+
+[node name="Lantern1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2232, 690 )

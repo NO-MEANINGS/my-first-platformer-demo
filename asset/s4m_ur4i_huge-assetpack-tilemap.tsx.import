@@ -1,0 +1,20 @@
+[remap]
+
+importer="vnen.tiled_tileset_importer"
+type="TileSet"
+path="res://.import/s4m_ur4i_huge-assetpack-tilemap.tsx-c300153ddc3f4c65e74a816df3db1fa5.res"
+
+[deps]
+
+source_file="res://asset/s4m_ur4i_huge-assetpack-tilemap.tsx"
+dest_files=[ "res://.import/s4m_ur4i_huge-assetpack-tilemap.tsx-c300153ddc3f4c65e74a816df3db1fa5.res" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+image_flags=0
+embed_internal_images=true
+save_tiled_properties=false
+apply_offset=false
+post_import_script=""

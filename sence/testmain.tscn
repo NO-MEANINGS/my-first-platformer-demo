@@ -1,0 +1,249 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://sence/level/part1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sence/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sence/level/part1_collision.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sence/level/part1_levels.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sence/level/part1_lanterns.tscn" type="PackedScene" id=5]
+[ext_resource path="res://asset/unifont-13.0.06.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://src/help.gd" type="Script" id=7]
+[ext_resource path="res://sence/lantern/lantern_type2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sence/lantern/lantern_type1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/Flag.gd" type="Script" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+outline_size = 1
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+outline_size = 1
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+outline_size = 1
+font_data = ExtResource( 6 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 32.28
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
+outline_size = 1
+font_data = ExtResource( 6 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 55, 7 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 14, 30 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 116, 57 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 36, 60 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 120, 10 )
+
+[node name="Node2D" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 600.0, 1200.0, 1800.0, 2400.0 ],
+"_edit_vertical_guides_": [ 1020.0, 2040.0, 3060.0, 4080.0, 5100.0, 6120.0 ]
+}
+
+[node name="Map" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 24 )
+
+[node name="collision" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="levels" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="lanterns" parent="." instance=ExtResource( 5 )]
+
+[node name="Lantern2" parent="lanterns" instance=ExtResource( 8 )]
+position = Vector2( 5328, 1254 )
+
+[node name="Lantern3" parent="lanterns" instance=ExtResource( 8 )]
+position = Vector2( 5616, 1278 )
+
+[node name="lantern7" parent="lanterns" instance=ExtResource( 9 )]
+position = Vector2( 5424, 1566 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 236, 1128 )
+collision_mask = 29
+
+[node name="Sprite" parent="Player" index="2"]
+frame = 9
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="move" type="RichTextLabel" parent="Node2D"]
+margin_left = 38.0
+margin_top = 987.0
+margin_right = 393.0
+margin_bottom = 1018.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "← → or left joystick to move"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="jump" type="RichTextLabel" parent="Node2D"]
+margin_left = 635.0
+margin_top = 867.0
+margin_right = 903.0
+margin_bottom = 897.0
+custom_fonts/normal_font = SubResource( 2 )
+text = "space, A or ✕ to jump"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pull" type="RichTextLabel" parent="Node2D"]
+margin_left = 2234.0
+margin_top = 630.0
+margin_right = 2452.0
+margin_bottom = 662.0
+custom_fonts/normal_font = SubResource( 3 )
+text = "press c, R1 or L1 "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="jumparea" type="Area2D" parent="Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/jumparea"]
+position = Vector2( 666, 1122 )
+shape = SubResource( 4 )
+
+[node name="kick_wall_jump" type="Node2D" parent="Node2D"]
+
+[node name="RichTextLabel1" type="RichTextLabel" parent="Node2D/kick_wall_jump"]
+visible = false
+margin_left = 1705.0
+margin_top = 718.0
+margin_right = 2049.0
+margin_bottom = 796.0
+custom_fonts/normal_font = SubResource( 6 )
+text = "you can kick walls to jump higher:
+face to a wall, then jump"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Node2D/kick_wall_jump"]
+visible = false
+margin_left = 4566.0
+margin_top = 1322.0
+margin_right = 4899.0
+margin_bottom = 1404.0
+custom_fonts/normal_font = SubResource( 6 )
+text = "you can kick walls to jump higher:
+face to a wall, then jump"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Node2D/kick_wall_jump"]
+visible = false
+margin_left = 2502.0
+margin_top = 797.0
+margin_right = 2835.0
+margin_bottom = 885.0
+custom_fonts/normal_font = SubResource( 6 )
+text = "you can kick walls to jump higher:
+face to a wall, then jump"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Node2D/kick_wall_jump"]
+visible = false
+margin_left = 1155.0
+margin_top = 1109.0
+margin_right = 1482.0
+margin_bottom = 1206.0
+custom_fonts/normal_font = SubResource( 6 )
+text = "you can kick walls to jump higher:
+face to a wall, then jump"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="Node2D/kick_wall_jump"]
+position = Vector2( 1560, 815 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/kick_wall_jump/Area2D"]
+shape = SubResource( 7 )
+
+[node name="Area2D2" type="Area2D" parent="Node2D/kick_wall_jump"]
+position = Vector2( 1689, 1122 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/kick_wall_jump/Area2D2"]
+shape = SubResource( 8 )
+
+[node name="Area2D3" type="Area2D" parent="Node2D/kick_wall_jump"]
+position = Vector2( 2784, 933 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/kick_wall_jump/Area2D3"]
+shape = SubResource( 9 )
+
+[node name="Area2D4" type="Area2D" parent="Node2D/kick_wall_jump"]
+position = Vector2( 4937, 1475 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/kick_wall_jump/Area2D4"]
+shape = SubResource( 10 )
+
+[node name="Flag" type="Area2D" parent="."]
+position = Vector2( 5498, 1816 )
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flag"]
+shape = SubResource( 5 )
+
+[connection signal="player_touched_spike" from="collision/spike" to="Player" method="respawn"]
+[connection signal="level_changed" from="levels/0" to="Player/Camera2D" method="_on_level_changed"]
+[connection signal="level_changed" from="levels/1" to="Player/Camera2D" method="_on_level_changed"]
+[connection signal="level_changed" from="levels/1-1" to="Player/Camera2D" method="_on_level_changed"]
+[connection signal="level_changed" from="levels/1-2" to="Player/Camera2D" method="_on_level_changed"]
+[connection signal="level_changed" from="levels/2" to="Player/Camera2D" method="_on_level_changed"]
+[connection signal="level_changed" from="levels/3" to="Player/Camera2D" method="_on_level_changed"]
+[connection signal="level_changed" from="levels/4" to="Player/Camera2D" method="_on_level_changed"]
+[connection signal="level_changed" from="levels/5" to="Player/Camera2D" method="_on_level_changed"]
+[connection signal="level_changed" from="levels/6" to="Player/Camera2D" method="_on_level_changed"]
+[connection signal="pull_started" from="Player" to="Node2D" method="_on_Player_pull_started"]
+[connection signal="wall_jump_learned" from="Player" to="Node2D" method="_on_Player_wall_jump_learned"]
+[connection signal="body_entered" from="Node2D/jumparea" to="Node2D" method="_on_jumparea_body_entered"]
+[connection signal="body_entered" from="Node2D/kick_wall_jump/Area2D" to="Node2D" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Node2D/kick_wall_jump/Area2D2" to="Node2D" method="_on_Area2D2_body_entered"]
+[connection signal="body_entered" from="Node2D/kick_wall_jump/Area2D3" to="Node2D" method="_on_Area2D3_body_entered"]
+[connection signal="body_entered" from="Node2D/kick_wall_jump/Area2D4" to="Node2D" method="_on_Area2D4_body_entered"]
+[connection signal="body_entered" from="Flag" to="Flag" method="_on_Flag_body_entered"]
+
+[editable path="Map"]
+[editable path="collision"]
+[editable path="levels"]
+[editable path="Player"]

@@ -1,0 +1,8 @@
+Godot Engine v3.3.2.stable.flathub - https://godotengine.org
+OpenGL ES 3.0 Renderer: Radeon RX 580 Series (POLARIS10, DRM 3.41.0, 5.13.8-1-default, LLVM 11.1.0)
+OpenGL ES Batching: ON
+ 
+**ERROR**: Invalid locale 'C'.
+   At: core/translation.cpp:958:get_language_code() - Condition "p_locale.length() < 2" is true. Returned: p_locale
+**ERROR**: Unsupported locale 'C', falling back to 'en'.
+   At: core/translation.cpp:982:set_locale() - Unsupported locale 'C', falling back to 'en'.

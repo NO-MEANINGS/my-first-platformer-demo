@@ -1,0 +1,205 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://src/player/player.gd" type="Script" id=1]
+[ext_resource path="res://asset/s4m_ur4i_huge-assetpack-character-animations.png" type="Texture" id=2]
+[ext_resource path="res://src/player/WallDetector.gd" type="Script" id=3]
+[ext_resource path="res://src/player/GroundDetector.gd" type="Script" id=4]
+[ext_resource path="res://src/player/AnimationPlayer.gd" type="Script" id=5]
+[ext_resource path="res://src/player/Detectors.gd" type="Script" id=6]
+[ext_resource path="res://src/player/Camera2D.gd" type="Script" id=7]
+[ext_resource path="res://asset/bgm.ogg" type="AudioStream" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "dash"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fall"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "run"
+length = 0.4
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15, 0.2, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 7, 6, 5, 6, 7 ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 256.0
+
+[node name="Player" type="KinematicBody2D"]
+collision_mask = 21
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "height: 22*3"
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/dash = SubResource( 1 )
+anims/fall = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/run = SubResource( 4 )
+script = ExtResource( 5 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+process_mode = 0
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+flip_h = true
+hframes = 4
+vframes = 12
+region_rect = Rect2( 2, 4, 0, 0 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+margin_left = -126.432
+margin_top = -279.648
+margin_right = 133.568
+margin_bottom = -108.648
+text = "fghdhfgjhfdgh"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Determination" type="Area2D" parent="."]
+visible = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Determination"]
+shape = SubResource( 5 )
+
+[node name="Detectors" type="Node2D" parent="."]
+process_priority = -1
+script = ExtResource( 6 )
+
+[node name="GroundDetectorBack" type="RayCast2D" parent="Detectors"]
+position = Vector2( 12, 36 )
+enabled = true
+cast_to = Vector2( 0, 0.16 )
+collision_mask = 4
+script = ExtResource( 4 )
+
+[node name="GroundDetectorFront" type="RayCast2D" parent="Detectors"]
+position = Vector2( -12, 36 )
+enabled = true
+cast_to = Vector2( 0, 0.16 )
+collision_mask = 4
+script = ExtResource( 4 )
+
+[node name="LanternDetector" type="Area2D" parent="Detectors"]
+collision_layer = 16
+collision_mask = 16
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detectors/LanternDetector"]
+shape = SubResource( 6 )
+
+[node name="WallDetectorUp" type="RayCast2D" parent="Detectors"]
+position = Vector2( 15, 0 )
+enabled = true
+cast_to = Vector2( 0.32, 0 )
+collision_mask = 4
+script = ExtResource( 3 )
+
+[node name="WallDetectorDown" type="RayCast2D" parent="Detectors"]
+position = Vector2( 15, 31 )
+enabled = true
+cast_to = Vector2( 0.32, 0 )
+collision_mask = 4
+script = ExtResource( 3 )
+
+[node name="PullObstacleDetector" type="RayCast2D" parent="Detectors"]
+enabled = true
+cast_to = Vector2( 0, 0 )
+collision_mask = 4
+
+[node name="CeilingDetctorBack" type="RayCast2D" parent="Detectors"]
+position = Vector2( -11, -8 )
+enabled = true
+cast_to = Vector2( 0, -0.1 )
+collision_mask = 4
+
+[node name="CeilingDetctorFront" type="RayCast2D" parent="Detectors"]
+position = Vector2( 11, -8 )
+enabled = true
+cast_to = Vector2( 0, -0.1 )
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 12, -8, 15, 26, 0, 36, -15, 26, -12, -8 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+
+[connection signal="face_changed" from="." to="Detectors/WallDetectorDown" method="_on_Player_face_changed"]
+[connection signal="face_changed" from="." to="AnimationPlayer" method="_on_Player_face_changed"]
+[connection signal="face_changed" from="." to="Detectors/GroundDetectorBack" method="_on_Player_face_changed"]
+[connection signal="face_changed" from="." to="Detectors/WallDetectorUp" method="_on_Player_face_changed"]
+[connection signal="face_changed" from="." to="Detectors/GroundDetectorFront" method="_on_Player_face_changed"]
+[connection signal="area_entered" from="Detectors/LanternDetector" to="Detectors" method="_on_LanternDetector_lantern_entered"]
+[connection signal="area_exited" from="Detectors/LanternDetector" to="Detectors" method="_on_LanternDetector_lantern_exited"]

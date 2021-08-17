@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sence/lantern/lanten_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://asset/lantern.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 24, 0, 24, 24 )
+
+[node name="Lantern" instance=ExtResource( 1 )]
+type = 2
+
+[node name="lantern" parent="." index="1"]
+position = Vector2( 1.69407e-21, 1.19209e-07 )
+texture = SubResource( 1 )

@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sence/level/level_area.tscn" type="PackedScene" id=1]
+
+[node name="levels" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 600.0, 1200.0, 1222.0 ],
+"_edit_vertical_guides_": [ 4080.0, 5100.0 ]
+}
+
+[node name="0" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 600 )
+spawn_point = Vector2( 200, 1100 )
+
+[node name="1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1020, 600 )
+spawn_point = Vector2( 1050, 1075 )
+
+[node name="1-1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1020, 0 )
+spawn_point = Vector2( 1050, 1075 )
+
+[node name="1-2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2040, 0 )
+spawn_point = Vector2( 1050, 1075 )
+
+[node name="2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2040, 600 )
+spawn_point = Vector2( 2100, 900 )
+
+[node name="3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3060, 600 )
+spawn_point = Vector2( 3100, 650 )
+
+[node name="4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3060, 1200 )
+spawn_point = Vector2( 3192, 1290 )
+
+[node name="5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 4080, 1200 )
+spawn_point = Vector2( 4160, 1620 )
+
+[node name="6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 5100, 1200 )
+spawn_point = Vector2( 5136, 1320 )

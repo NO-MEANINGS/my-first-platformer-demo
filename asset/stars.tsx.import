@@ -1,0 +1,20 @@
+[remap]
+
+importer="vnen.tiled_tileset_importer"
+type="TileSet"
+path="res://.import/stars.tsx-88c2c7c2495f4f69658019d74214abfa.res"
+
+[deps]
+
+source_file="res://asset/stars.tsx"
+dest_files=[ "res://.import/stars.tsx-88c2c7c2495f4f69658019d74214abfa.res" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+image_flags=0
+embed_internal_images=true
+save_tiled_properties=false
+apply_offset=false
+post_import_script=""
