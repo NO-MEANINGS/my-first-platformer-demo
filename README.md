@@ -5,3 +5,8 @@ DO NOT READ IT!!!
 DO NOT READ IT!!!   
 DO NOT READ IT!!!  
 XD
+
+
+#### 15 Oct 2021 update
+Never expected this toy can make it to the final XD
+Maybe I should perfect it...?
